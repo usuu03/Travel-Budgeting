@@ -24,7 +24,7 @@ const getUserById = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    console.error("Error registering user:", error);
+    console.error("Error finding user:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };

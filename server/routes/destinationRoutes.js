@@ -1,19 +1,15 @@
-const Destination = require("../models/Destination");
+const express = require("express");
+const UserController = require("../controller/userController");
+const DestinationController = require("../controller/destinationController");
 
-const getAllDestinations = (req, res) => {};
+const router = express.Router();
 
-const getDestinationById = (req, res) => {};
+router.get("/", DestinationController.getAllDestinations);
 
-const addDestination = (req, res) => {};
+router.get("/:id", DestinationController.getDestinationById);
 
-const updateDestination = (req, res) => {};
+router.post("/", DestinationController.addDestination);
 
-const deleteDestination = (req, res) => {};
+router.put("/:id", DestinationController.updateDestination);
 
-module.exports = {
-  getAllDestinations,
-  getDestinationById,
-  addDestination,
-  updateDestination,
-  deleteDestination,
-};
+router.delete("/:id", DestinationController.deleteDestination);
