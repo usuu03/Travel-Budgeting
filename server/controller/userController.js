@@ -4,7 +4,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // Generate a random secret key (256 bits)
-const secretKey = crypto.randomBytes(32).toString("hex");
+const secretKey = process.env.JWT_SECRET_KEY;
+
+console.log(secretKey);
 
 const getAllUsers = async (req, res) => {
   const users = User.findAll();
