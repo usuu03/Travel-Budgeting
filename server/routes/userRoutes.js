@@ -9,10 +9,10 @@ router.get("/:id", UserController.getUserById);
 
 router.post("/register", UserController.registerUser);
 
-router.post("/login", UserController.loggingUser);
+router.post("/login", UserController.loggingUser); // Fix the function name here
 
 router.put("/:id", UserController.updateUser);
 
 router.delete("/:id", UserController.deleteUser);
 
-module.export = router;
+module.exports = router;

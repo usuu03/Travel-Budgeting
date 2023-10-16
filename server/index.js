@@ -18,11 +18,11 @@ app.get("/", (req, res) => {
 // User routes
 app.use("/user", userRoutes);
 
-// Destination routes
+// // Destination routes
 app.use("/destinations", authenticateUser, destinationRoutes);
 
 // Expense routes
-app.use("/expenses", authenticateUser, expenseRoutes);
+// app.use("/expenses", authenticateUser, expenseRoutes);
 
 const port = process.env.PORT || 4000; // Use the PORT environment variable or default to 4000
 app.listen(port, () => {

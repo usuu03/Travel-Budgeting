@@ -13,3 +13,5 @@ router.post("/", DestinationController.addDestination);
 router.put("/:id", DestinationController.updateDestination);
 
 router.delete("/:id", DestinationController.deleteDestination);
+
+module.exports = router;

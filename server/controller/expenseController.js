@@ -78,7 +78,7 @@ const updateExpense = async (req, res) => {
     await expenseUpdate.update(updatedExpense);
     res.status(200).json({
       message: "Expense updated successfully",
-      destination: updateDestination,
+      expense: updateExpense,
     });
   } catch (error) {
     console.error("Error updating expense", error);

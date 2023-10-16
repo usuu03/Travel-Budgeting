@@ -1,12 +1,11 @@
 const User = require("../models/User");
-const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // Generate a random secret key (256 bits)
 const secretKey = process.env.JWT_SECRET_KEY;
 
-console.log(secretKey);
+// console.log(secretKey);
 
 const getAllUsers = async (req, res) => {
   const users = User.findAll();
