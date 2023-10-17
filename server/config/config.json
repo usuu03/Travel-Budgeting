@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "User",
+    "password": "$uperDragon13",
+    "database": "travelbudget",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "User",
+    "password": "$uperDragon13",
+    "database": "travelbudget",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "User",
+    "password": "$uperDragon13",
+    "database": "travelbudget",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

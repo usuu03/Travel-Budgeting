@@ -36,7 +36,7 @@ const Expense = sequelize.define("expense", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "Destination", // This should match the model name for Destination
+      model: "destination", // This should match the model name for Destination
       key: "id",
     },
   },
@@ -44,7 +44,7 @@ const Expense = sequelize.define("expense", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "User", // This should match the model name for User
+      model: "user", // This should match the model name for User
       key: "id",
     },
   },
