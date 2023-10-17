@@ -1,53 +1,30 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
-
-const Expense = sequelize.define("expense", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false,
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  amount: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
-  },
-  currency: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  notes: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
-  destinationId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: "destination", // This should match the model name for Destination
-      key: "id",
-    },
-  },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: "user", // This should match the model name for User
-      key: "id",
-    },
-  },
-});
-
-module.exports = Expense;
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Expense extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  Expense.init({
+    name: DataTypes.STRING,
+    date: DataTypes.DATE,
+    category: DataTypes.STRING,
+    amount: DataTypes.FLOAT,
+    currency: DataTypes.STRING,
+    notes: DataTypes.TEXT,
+    destinationId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Expense',
+  });
+  return Expense;
+};
