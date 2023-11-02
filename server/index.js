@@ -8,8 +8,8 @@ const { authenticateUser } = require("./middleware/authentication");
 
 // Routes
 const userRoutes = require("./routes/userRoutes");
-const destinationRoutes = require("./routes/destinationRoutes");
-const expenseRoutes = require("./routes/expenseRoutes");
+// const destinationRoutes = require("./routes/destinationRoutes");
+// const expenseRoutes = require("./routes/expenseRoutes");
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 app.use("/users", userRoutes);
 
 // // Destination routes
-app.use("/destinations", authenticateUser, destinationRoutes);
+// app.use("/destinations", authenticateUser, destinationRoutes);
 
 // Expense routes
 // app.use("/expenses", authenticateUser, expenseRoutes);
