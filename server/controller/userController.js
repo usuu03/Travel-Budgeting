@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../config/dbConfig");
-const secretKey = process.env.JWT_SECRET_KEY; // Define your JWT secret key
+const secretKey = process.env.JWT_SECRET_KEY;
 
 const getAllUsers = (req, res) => {
   try {
@@ -26,23 +26,19 @@ async function getUserById(req, res) {
 
   try {
     // Retrieve the user with the specified ID from the User table
-    db.query(
-      "SELECT emailAdress and password FROM User WHERE id = ?",
-      [id],
-      (error, results) => {
-        if (error) {
-          console.error(error);
-          return res.status(500).json({ message: "Error finding user" });
-        }
-
-        if (results.length === 0) {
-          return res.status(404).json({ message: "No such user" });
-        }
-
-        // Return the user found by ID
-        res.status(200).json(results[0]);
+    db.query("SELECT * FROM User WHERE userID = ?", [id], (error, results) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Error finding user" });
       }
-    );
+
+      if (results.length === 0) {
+        return res.status(404).json({ message: "No such user" });
+      }
+
+      // Return the user found by ID
+      res.status(200).json(results[0]);
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
