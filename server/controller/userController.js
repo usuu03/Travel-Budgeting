@@ -89,7 +89,7 @@ const login = async (req, res) => {
         expiresIn: "1h",
       });
 
-      res.status(200).json({ message: "Login successful", token });
+      res.status(200).json({ message: "Login successful", token, user });
     } else {
       return res.status(401).json({ message: "Invalid credentials" });
     }

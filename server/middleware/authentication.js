@@ -1,28 +1,28 @@
-const crypto = require("crypto");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Generate a random secret key (256 bits)
-const secretKey = process.env.JWT_SECRET_KEY;
-
 const authenticateUser = (req, res, next) => {
-  const token = req.header("x-auth-token");
+  // Get the token from the request header
+  const token = req.header("Authorization");
 
   if (!token) {
-    return res
-      .status(401)
-      .json({ message: "Access denied. No token provided." });
+    return res.status(401).json({ message: "Unauthorized: No token provided" });
   }
 
   try {
-    const decoded = jwt.verify(token, secretKey);
-    req.user = decoded; // Store user information in the request object
-    next(); // Move on to the next middleware or route
-  } catch (ex) {
-    res.status(400).json({ message: "Invalid token." });
+    // Check if the token starts with "Bearer " and extract the token part
+    const tokenPart = token.split(" ")[1];
+
+    // Verify the token
+    const decoded = jwt.verify(tokenPart, process.env.JWT_SECRET_KEY);
+
+    // Attach user information to the request object
+    req.user = decoded;
+
+    // Move to the next middleware or route handler
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Unauthorized: Invalid token" });
   }
 };
 
-module.exports = {
-  authenticateUser,
-};
+module.exports = { authenticateUser };
