@@ -1,13 +1,88 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+/* Header Styles */
+#navbar {
+  background-color: #3498db;
+
+}
+
+
+/* Login Page Styles */
+.title {
+  margin-top: 20px;
+}
+
+#nav-item {
+  color: white;
+}
+
+#login-btn {
+  background-color: #2ecc71;
+}
+
+.form-container {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 5px 5px 5px 5px #dcdcdc;
+  padding-bottom: 20px;
+  width: 75%;
+  margin-left: 10%;
+  top: 50%;
+  left: 50%;
+}
+
+.form-elements-div {
+  margin-bottom: 20px;
+
+  justify-content: space-between;
+
+}
+
+.form-row {
+  margin-bottom: 40px;
+  display: flex;
+  width: auto;
+  /* Use Flexbox layout */
+  justify-content: space-between;
+  /* Space elements evenly */
+
+}
+
+.input-password,
+.input-email,
+#login-btn,
+.info-text {
+  margin-bottom: 40px;
+}
+
+
+
+/*  Register Page Styles */
+.form-emailAddress,
+.form-confirmEmailAddress,
+.form-password {
+  width: 100%;
+}
+
+.form-firstName,
+.form-lastName {
+  width: 49%;
+  /* Set the width for both columns */
 }

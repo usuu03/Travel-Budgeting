@@ -4,12 +4,24 @@ const { authenticateUser } = require("../middleware/authentication");
 
 const router = express.Router();
 
+//Getting all Destinations
+router.get("/all", destinationController.getAllDestinations);
+
+//Getting Destination By ID
+router.get("/:id", destinationController.getDestinationByID);
+
+// Getting all the User Created Destinations
 router.get(
-  "/user/:id/all",
+  "/user/all",
   authenticateUser,
   destinationController.getUserDestinations
 );
 
-router.get("/all", authenticateUser, destinationController.getAllDestinations);
+// Adding a new Destination
+router.post(
+  "/user/new/destination",
+  authenticateUser,
+  destinationController.addDestination
+);
 
 module.exports = router;

@@ -66,6 +66,39 @@ const register = async (req, res) => {
   }
 };
 
+// const login = async (req, res) => {
+//   try {
+//     const { emailAddress, password } = req.body;
+
+//     // Find the user by email address
+//     const selectQuery = "SELECT * FROM User WHERE emailAddress = ?";
+//     const [results] = await db.promise().query(selectQuery, [emailAddress]);
+
+//     if (results.length === 0) {
+//       return res.status(400).json({ message: "User not found" });
+//     }
+
+//     const user = results[0];
+
+//     // Check the password using bcrypt
+//     const isMatch = await bcrypt.compare(password, user.password);
+
+//     if (isMatch) {
+//       // Generate a JWT token if the password is correct
+//       const token = jwt.sign({ userID }, process.env.JWT_SECRET_KEY, {
+//         expiresIn: "1h",
+//       });
+
+//       res.status(200).json({ message: "Login successful", token, user });
+//     } else {
+//       return res.status(401).json({ message: "Invalid credentials" });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Login Unsuccessful" });
+//   }
+// };
+
 const login = async (req, res) => {
   try {
     const { emailAddress, password } = req.body;
@@ -85,9 +118,13 @@ const login = async (req, res) => {
 
     if (isMatch) {
       // Generate a JWT token if the password is correct
-      const token = jwt.sign({ emailAddress }, process.env.JWT_SECRET_KEY, {
-        expiresIn: "1h",
-      });
+      const token = jwt.sign(
+        { userId: user.userID },
+        process.env.JWT_SECRET_KEY,
+        {
+          expiresIn: "1h",
+        }
+      );
 
       res.status(200).json({ message: "Login successful", token, user });
     } else {
