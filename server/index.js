@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config(); // Load environment variables from .env file
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 const { authenticateUser } = require("./middleware/authentication");
 
 // Routes
