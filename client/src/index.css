@@ -86,3 +86,11 @@ code {
   width: 49%;
   /* Set the width for both columns */
 }
+
+/* Destination Styles */
+.destination-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  /* Add any other styles you want for the destination box */
+}

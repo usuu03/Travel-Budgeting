@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthState, useAuthDispatch } from "../context/authContext"; // Import your authentication context and hooks
 
 export default function Header() {
+  const { isAuthenticated, user } = useAuthState(); // Get authentication state
+  const authDispatch = useAuthDispatch(); // Get authentication dispatch function
+
+  const handleLogout = () => {
+    // Dispatch a logout action when the user clicks "Logout"
+    authDispatch({ type: "LOGOUT" });
+  };
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-success">
@@ -26,15 +35,24 @@ export default function Header() {
                 Create
               </Link>
             </li> */}
+
             <li className="nav-item">
               <Link to="/destinations" className="nav-link" id="nav-item">
                 My Destinations
               </Link>
             </li>
+
             <li className="nav-item">
-              <Link to="/login" className="nav-link" id="nav-item">
-                Login/Logout
-              </Link>
+              {/* Conditionally render "Login" or "Logout" based on authentication status */}
+              {isAuthenticated ? (
+                <span className="nav-link" id="nav-item" onClick={handleLogout}>
+                  Logout
+                </span>
+              ) : (
+                <Link to="/login" className="nav-link" id="nav-item">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

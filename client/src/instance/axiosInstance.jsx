@@ -9,7 +9,8 @@ const useAxiosInstance = () => {
     baseURL: "http://localhost:4000",
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }), // Add Authorization header if token exists
+      ...(token && { Authorization: `Bearer ${token}` }),
+      // Add Authorization header if token exists
     },
   });
 

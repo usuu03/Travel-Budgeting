@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import DestinationList from "./pages/DestinationList";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ExampleComponent from "./pages/ExampleComponent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           {""}
           <Route path="/login" element={<Login />} />
+          <Route path="/test" element={<ExampleComponent />} />
           <Route path="/register" element={<Register />} />
           <Route path="/destinations" element={<DestinationList />} />
         </Routes>
