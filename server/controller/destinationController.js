@@ -136,7 +136,28 @@ const updateDestination = async (req, res) => {
   }
 };
 
-const deleteDestination = async (req, res) => {};
+const deleteDestination = async (req, res) => {
+  try {
+    const userID = req.user.userId;
+    const { id } = req.params;
+
+    const deleteQuery =
+      "DELETE FROM Destination WHERE destinationID = ? AND userID = ?";
+
+    const [results] = await db.promise().query(deleteQuery, [id, userID]);
+
+    if (results.affectedRows === 0) {
+      return res.status(404).json({ message: "Destination not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Successfully deleted destination", results });
+  } catch (error) {
+    console.error("Destination deletion error", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
 module.exports = {
   getUserDestinations,
@@ -144,4 +165,5 @@ module.exports = {
   getDestinationByID,
   addDestination,
   updateDestination,
+  deleteDestination,
 };

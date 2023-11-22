@@ -31,4 +31,10 @@ router.put(
   destinationController.updateDestination
 );
 
+//Deleting a Destination
+router.delete(
+  "/delete/:id",
+  authenticateUser,
+  destinationController.deleteDestination
+);
 module.exports = router;
