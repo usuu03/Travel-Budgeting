@@ -20,6 +20,8 @@ export default function Login() {
     password: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -29,6 +31,10 @@ export default function Login() {
       navigate("/destinations");
     } catch (error) {
       console.error("Login error:", error);
+
+      if (error.response && error.response.data) {
+        setErrors({ password: error.response.data.message });
+      }
     }
   };
 
@@ -47,6 +53,11 @@ export default function Login() {
       </div>
       <div className="form-container bg-light">
         <h6>Your Account Details</h6>
+        {errors.password && (
+          <div className="alert alert-danger" role="alert">
+            {errors.password}
+          </div>
+        )}
         <form action="" className="" onSubmit={handleSubmit}>
           <div className="form-elements-div">
             <div className="input-email">
