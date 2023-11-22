@@ -17,7 +17,10 @@ function App() {
         <Header />
         <Routes>
           {""}
-          <Route path="/login" element={<Login />} />
+          {[
+            <Route key="login" path="/" element={<Login />} />,
+            <Route key="loginAlt" path="/login" element={<Login />} />,
+          ]}
           <Route path="/test" element={<ExampleComponent />} />
           <Route path="/register" element={<Register />} />
           <Route path="/destinations" element={<DestinationList />} />

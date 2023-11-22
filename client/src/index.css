@@ -23,6 +23,11 @@ code {
 }
 
 
+.page-title {
+  margin-left: 5vh;
+  margin-top: 1vh
+}
+
 /* Login Page Styles */
 .title {
   margin-top: 20px;
@@ -90,7 +95,25 @@ code {
 /* Destination Styles */
 .destination-box {
   border: 1px solid #ccc;
+  border-radius: 15px;
   padding: 10px;
   margin: 5px;
   /* Add any other styles you want for the destination box */
+  text-align: center;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  /* Adjust as needed */
+}
+
+.container {
+  margin-top: 10vh;
+}
+
+
+#delete-btn {
+  margin-left: 5px;
 }

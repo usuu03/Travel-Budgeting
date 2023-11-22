@@ -1,5 +1,7 @@
-// AuthContext.js
 import { createContext, useContext, useReducer } from "react";
+
+const AuthStateContext = createContext();
+const AuthDispatchContext = createContext();
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -51,6 +53,7 @@ const useAuthDispatch = () => {
   if (!context) {
     throw new Error("useAuthDispatch must be used within an AuthProvider");
   }
+
   return context;
 };
 

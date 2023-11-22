@@ -19,7 +19,7 @@ export default function DestinationList() {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axiosInstance.get("destination/user/all");
+        const response = await axiosInstance.get("destinations/user/all");
         setDestinations(response.data); // Assuming the response contains the user's destinations
         console.log(user.firstName);
       } catch (error) {
@@ -47,27 +47,32 @@ export default function DestinationList() {
   return (
     <div>
       {isAuthenticated ? (
-        <h2>{`Welcome back to your Travel Destinations, ${user.firstName}!`}</h2>
+        <h2 className="page-title">{`Welcome back to your Travel Destinations, ${user.firstName}!`}</h2>
       ) : (
         <h2>Loading...</h2>
       )}
 
-      <div className="bg-light">
-        {destinations.map((destination) => (
-          <div key={destination.id} className="destination-box">
-            {/* Render destination details here */}
-            <div>{destination.name}</div>
-            <div>{destination.description}</div>
+      <div className="container">
+        <div className="destination-grid">
+          {destinations.map((destination) => (
+            <div key={destination.id} className="destination-box">
+              {/* Render destination details here */}
+              <div>
+                <Link>{destination.name}</Link>
+              </div>
+              <div>{destination.description}</div>
 
-            <div className="btn-section">
-              <Link className=" btn btn-primary" to="/expenses">
-                Expenses
-              </Link>
-              <button className=" btn btn-warning">Edit Destination</button>
-              <button className=" btn btn-danger">Delete Destination</button>
+              <div className="btn-section">
+                <button className=" btn btn-warning" id="edit-btn">
+                  Edit{" "}
+                </button>
+                <button className=" btn btn-danger" id="delete-btn">
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
