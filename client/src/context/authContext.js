@@ -1,9 +1,6 @@
 // AuthContext.js
 import { createContext, useContext, useReducer } from "react";
 
-const AuthStateContext = createContext();
-const AuthDispatchContext = createContext();
-
 const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":

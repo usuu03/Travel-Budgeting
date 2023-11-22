@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 // User routes
 app.use("/users", userRoutes);
 
-app.use("/destination", destinationRoutes);
+app.use("/destinations", destinationRoutes);
 
 // // Destination routes
 // app.use("/destinations", authenticateUser, destinationRoutes);

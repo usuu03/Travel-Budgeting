@@ -49,10 +49,13 @@ const getDestinationByID = async (req, res) => {
   try {
     const { id } = req.params;
 
-    //Query
-    const query = "SELECT * FROM Destination WHERE destinationID = ?";
+    const userID = req.user.userId;
 
-    db.query(query, [id], (error, results) => {
+    //Query
+    const query =
+      "SELECT * FROM Destination WHERE destinationID = ? AND userID = ?";
+
+    db.query(query, [id, userID], (error, results) => {
       if (error) {
         console.error(error);
         return res

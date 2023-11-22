@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/all", destinationController.getAllDestinations);
 
 //Getting Destination By ID
-router.get("/:id", destinationController.getDestinationByID);
+router.get("/:id", authenticateUser, destinationController.getDestinationByID);
 
 // Getting all the User Created Destinations
 router.get(

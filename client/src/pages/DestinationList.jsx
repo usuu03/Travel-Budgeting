@@ -21,6 +21,7 @@ export default function DestinationList() {
       try {
         const response = await axiosInstance.get("destination/user/all");
         setDestinations(response.data); // Assuming the response contains the user's destinations
+        console.log(user.firstName);
       } catch (error) {
         console.error("Error fetching destinations:", error);
       }
@@ -46,7 +47,7 @@ export default function DestinationList() {
   return (
     <div>
       {isAuthenticated ? (
-        <h2>{`Welcome back to your Travel Destinations, ${user.firstname}!`}</h2>
+        <h2>{`Welcome back to your Travel Destinations, ${user.firstName}!`}</h2>
       ) : (
         <h2>Loading...</h2>
       )}
