@@ -13,17 +13,10 @@ const userRoutes = require("./routes/userRoutes");
 const destinationRoutes = require("./routes/destinationRoutes");
 // const expenseRoutes = require("./routes/expenseRoutes");
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 // User routes
 app.use("/users", userRoutes);
 
 app.use("/destinations", destinationRoutes);
-
-// // Destination routes
-// app.use("/destinations", authenticateUser, destinationRoutes);
 
 // Expense routes
 // app.use("/expenses", authenticateUser, expenseRoutes);

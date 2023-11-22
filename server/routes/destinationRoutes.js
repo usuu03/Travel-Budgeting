@@ -24,4 +24,11 @@ router.post(
   destinationController.addDestination
 );
 
+// Updating a Destination
+router.put(
+  "/update/:id",
+  authenticateUser,
+  destinationController.updateDestination
+);
+
 module.exports = router;

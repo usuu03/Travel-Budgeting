@@ -109,7 +109,32 @@ const addDestination = async (req, res) => {
   }
 };
 
-const updateDestination = async (req, res) => {};
+const updateDestination = async (req, res) => {
+  try {
+    const userID = req.user.userId;
+    const { id } = req.params;
+    const updatedDestination = req.body;
+
+    //Updating the destination in the Destination Table
+    const updatedQuery =
+      "UPDATE Destination SET ? WHERE destinationID = ? AND userID = ?";
+    const [results] = await db
+      .promise()
+      .query(updatedQuery, [updatedDestination, id, userID]);
+
+    console.log(results);
+
+    //Checking if the destination exists
+    if (results.affectedRows === 0) {
+      return res.status(404).json({ message: "Destination not found" });
+    }
+
+    res.status(200).json({ message: "Destination Updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: " Internal Server Error" });
+  }
+};
 
 const deleteDestination = async (req, res) => {};
 
@@ -118,4 +143,5 @@ module.exports = {
   getAllDestinations,
   getDestinationByID,
   addDestination,
+  updateDestination,
 };
